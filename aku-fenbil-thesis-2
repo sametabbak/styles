@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" page-range-format="expanded" demote-non-dropping-particle="sort-only" default-locale="tr-TR">
+  <info>
+    <title>AKU FENBIL Thesis</title>
+    <id>https://csl.mendeley.com/styles/555444251/aku-fenbil-thesis-2</id>
+    <author>
+      <name>Samet Abbak</name>
+      <email>sbbak@aku.edu.tr</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="science"/>
+    <updated>2020-01-02T21:47:13+00:00</updated>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="text"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-last="always" initialize-with=" " name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" delimiter=", " suffix=", ">
+      <name delimiter-precedes-last="always" initialize-with=" " name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" text-case="capitalize-first" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" et-al-fontstyle="italic" disambiguate-add-year-suffix="true" collapse="year">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter=", ">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" font-variant="" suffix=", "/>
+        <choose>
+          <if type="article article-magazine article-newspaper article-journal review" match="any">
+            <text variable="title" suffix=","/>
+            <text variable="container-title" text-case="title" font-style="normal" suffix=", "/>
+            <text variable="volume" font-weight="normal" suffix=","/>
+            <text variable="page"/>
+          </if>
+          <if type="book" match="any">
+            <group>
+              <text macro="editor"/>
+            </group>
+            <text macro="issued" suffix=","/>
+            <text variable="title" suffix=","/>
+            <text variable="volume" suffix=","/>
+            <names variable="translator" suffix=",">
+              <label form="short" plural="never" text-case="capitalize-first" suffix=": "/>
+              <name initialize-with=" " name-as-sort-order="all" sort-separator=" "/>
+            </names>
+            <text variable="publisher" suffix=","/>
+            <group suffix=",">
+              <text variable="number-of-pages" strip-periods="false" quotes="false"/>
+              <label plural="never" text-case="lowercase" strip-periods="true" font-variant="normal" text-decoration="none" vertical-align="baseline" variable="page" form="short"/>
+            </group>
+            <text variable="publisher-place"/>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <text macro="issued" suffix=","/>
+            <text variable="container-title" prefix="In " suffix="," text-case="title"/>
+            <text macro="editor"/>
+            <text variable="title" suffix="."/>
+            <text variable="page" prefix="(" suffix="),"/>
+            <text macro="publisher" suffix=","/>
+            <group suffix=",">
+              <text variable="number-of-pages" strip-periods="false" quotes="false"/>
+              <label plural="never" text-case="lowercase" strip-periods="true" font-variant="normal" text-decoration="none" vertical-align="baseline" variable="page" form="short"/>
+            </group>
+            <text variable="publisher-place"/>
+          </else-if>
+          <else-if type="thesis">
+            <text macro="issued" suffix=","/>
+            <text variable="title" text-case="capitalize-first" font-variant="normal" suffix=","/>
+            <text variable="publisher" suffix=","/>
+            <group>
+              <text variable="number-of-pages"/>
+              <label plural="never" variable="page" form="short"/>
+            </group>
+            <text variable="publisher-place"/>
+          </else-if>
+          <else>
+            <text variable="title"/>
+            <text macro="publisher"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>
